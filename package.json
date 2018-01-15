@@ -4,6 +4,10 @@
   "description": "Nuxt.js project",
   "author": "99diagha <diarkourehpaz@gmail.com>",
   "private": true,
+  "engines": {
+    "node": "9.0.0",
+    "npm": "5.5.1"
+  },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
