@@ -1,6 +1,6 @@
 <template>
-  <div id="wrapper">
-    <section id="header">
+  <div class="wrapper">
+    <section class="banner">
       <img class="backdrop" :src="`https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path}`">
       <div class="backdrop-overlay"></div>
       <img class="poster" :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`">
@@ -12,18 +12,18 @@
         <a :href="`http://www.imdb.com/title/${movie.imdb_id}`" target="_blank">IMDB</a>
       </article>
     </section>
-    <aside id="aside">
+    <aside class="aside">
       <h6>Homepage</h6>
       <p><a class="homepage" :href="movie.homepage" target="_blank">{{ movie.homepage }}</a></p>
       <h6>Release date</h6>
       <p>{{ movie.release_date }}</p>
     </aside>
-    <section id="overview">
-      <h5 class="overview-header">Overview</h5>
+    <section class="overview">
+      <h5 class="left-border">Overview</h5>
       <p>{{ movie.overview }}</p>
     </section>
-    <section id="recommended-movies">
-      <h5 class="overview-header">Related movies</h5>
+    <section class="recommended-movies">
+      <h5 class="overview-header">You may also like</h5>
       <Poster v-for="(movie, i) in recommended_movies" :movie="movie" :key="i" />
     </section>
   </div>
@@ -67,12 +67,12 @@
 </script>
 
 <style lang="scss" scoped>
-  #wrapper {
+  .wrapper {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 1em;
 
-    #header {
+    .banner {
       grid-column: 1 / -1;
       display: grid;
       grid-template-columns: repeat(16, 1fr);
@@ -112,11 +112,11 @@
       }
     }
 
-    #aside {
+    .aside {
       grid-column: 2 / span 3;
     }
 
-    #overview {
+    .overview {
       grid-column: 5 / span 7;
 
     }
@@ -127,7 +127,7 @@
       border-left: 4px solid yellow;
     }
 
-    #recommended-movies {
+    .recommended-movies {
       grid-column: 1 / -1;
       display: grid;
       grid-template-columns: repeat(auto-fit, 163px);

@@ -46,5 +46,6 @@ module.exports = {
   ],
   modules: [
     'bootstrap-vue/nuxt'
-  ]
+  ],
+  loadingIndicator: '~/assets/wandering-cubes.html'
 }
