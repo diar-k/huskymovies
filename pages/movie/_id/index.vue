@@ -22,6 +22,12 @@
       <h5 class="left-border">Overview</h5>
       <p>{{ movie.overview }}</p>
     </section>
+<!--    <Adsense
+      ad-client="ca-pub-1167176160300523"
+      ad-slot="1234567890"
+      ad-style="display: block"
+      ad-format="auto"
+    />-->
     <section class="recommended-movies">
       <h5 class="overview-header">You may also like</h5>
       <Poster v-for="(movie, i) in recommended_movies" :movie="movie" :key="i" />
@@ -31,7 +37,8 @@
 
 <script>
   import axios from 'axios'
-  import Poster from '~/components/Poster.vue'
+  import Poster from '~/components/Poster'
+  import Adsense from '~/components/Adsense'
 
   export default {
     validate ({ params }) {
@@ -61,7 +68,8 @@
       }
     },
     components: {
-      Poster
+      Poster,
+      Adsense
     }
   }
 </script>

@@ -14,7 +14,7 @@
 <script>
   import axios from 'axios'
   import InfiniteLoading from 'vue-infinite-loading'
-  import Poster from '~/components/Poster.vue'
+  import Poster from '~/components/Poster'
 
   const apiKey = '441ac5f375693fc6cf2d7c5a00560aa2'
 
