@@ -7,31 +7,27 @@
       <article class="description">
         <h5>{{ release_year }}</h5>
         <h3 class="title">{{ movie.title }}</h3>
-        <h6>{{ runtime }}</h6>
-        <h6>{{ genres }}</h6>
-        <a :href="`http://www.imdb.com/title/${movie.imdb_id}`" target="_blank">IMDB</a>
+        <h6 class="text-grey">{{ runtime }}</h6>
+        <h6 class="text-grey">{{ genres }}</h6>
+        <a class="text-light-blue" :href="`http://www.imdb.com/title/${movie.imdb_id}`" target="_blank" rel="noopener">IMDB</a>
+        <p class="text-grey mt-3 mb-1">{{ movie.overview }}</p>
       </article>
     </section>
     <aside class="aside">
-      <h6>Homepage</h6>
-      <p><a class="homepage" :href="movie.homepage" target="_blank">{{ movie.homepage }}</a></p>
-      <h6>Release date</h6>
+      <h6 class="text-grey">Release date</h6>
       <p>{{ movie.release_date }}</p>
+      <h6 class="text-grey">Homepage</h6>
+      <p class="homepage text-light-blue"><a class="text-light-blue" :href="movie.homepage" target="_blank" rel="noopener">{{ homepage }}</a></p>
+
     </aside>
-    <section class="overview">
-      <h5 class="left-border">Overview</h5>
-      <p>{{ movie.overview }}</p>
-    </section>
-<!--    <Adsense
-      ad-client="ca-pub-1167176160300523"
-      ad-slot="1234567890"
-      ad-style="display: block"
-      ad-format="auto"
-    />-->
+    <main class="content">
+      <b-embed type="iframe" aspect="16by9" src="/jumanji.mp4"></b-embed>
+    </main>
+    <section class="ad"></section>
     <section class="recommended-movies">
-      <h5 class="overview-header">You may also like</h5>
       <Poster v-for="(movie, i) in recommended_movies" :movie="movie" :key="i" />
     </section>
+    <footer class="footer"></footer>
   </div>
 </template>
 
@@ -60,6 +56,9 @@
       runtime () {
         return Math.trunc(this.movie.runtime / 60) + 'h ' + (this.movie.runtime % 60) + 'm'
       },
+      homepage () {
+        return this.movie.homepage.length > 0 ? this.movie.homepage : '-'
+      },
       trailer_id () {
         return this.movie.videos.results[0].key
       },
@@ -77,79 +76,82 @@
 <style lang="scss" scoped>
   .wrapper {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(24, 1fr);
+    grid-column-gap: 1em;
+    grid-row-gap: 3em;
+  }
+
+  .banner {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-column-gap: 1em;
+    align-items: end;
+
+    & > * {
+      grid-row: 1;
+    }
+
+    .backdrop {
+      grid-column: 1 / -1;
+      width: 100%;
+      filter: opacity(0.4);
+      z-index: -10;
+    }
+
+    .backdrop-overlay {
+      grid-column: 1 / -1;
+      height: 80px;
+      background: linear-gradient(180deg,transparent 0, rgb(12, 25, 33));
+      z-index: -9;
+    }
+
+    .poster {
+      grid-column: 3 / span 3;
+      width: 100%;
+      filter: drop-shadow(0px 4px 12px black);
+    }
+
+    .description {
+      grid-column: 6 / span 9;
+    }
+
+    .title {
+      font-weight: 700;
+    }
+  }
+
+  .aside {
+    grid-column: 2 / span 5;
+
+    .homepage {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .content {
+    grid-column: 7 / span 12;
+  }
+
+  .ad {
+    grid-column: 19 / span 4;
+    width: 300px;
+    height: 250px;
+    background-color: black;
+  }
+
+  .recommended-movies {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 163px);
     grid-gap: 1em;
+    justify-content: center;
+    margin: 1em 0;
+  }
 
-    .banner {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: repeat(16, 1fr);
-      grid-column-gap: 1em;
-      align-items: end;
+  .footer {
 
-      & > * {
-        grid-row: 1;
-      }
-
-      .backdrop {
-        grid-column: 1 / -1;
-        width: 100%;
-        filter: opacity(0.75);
-        z-index: -10;
-      }
-
-      .backdrop-overlay {
-        grid-column: 1 / -1;
-        height: 80px;
-        background: linear-gradient(180deg,transparent 0, rgb(12, 25, 33));
-        z-index: -9;
-      }
-
-      .poster {
-        grid-column: 3 / span 3;
-        width: 100%;
-        filter: drop-shadow(0px 4px 12px black);
-      }
-
-      .description {
-        grid-column: 6 / span 8;
-      }
-
-      .title {
-        font-weight: 700;
-      }
-    }
-
-    .aside {
-      grid-column: 2 / span 3;
-    }
-
-    .overview {
-      grid-column: 5 / span 7;
-
-    }
-
-    .overview-header {
-      padding-left: 6px;
-      color: #546e7a;
-      border-left: 4px solid yellow;
-    }
-
-    .recommended-movies {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, 163px);
-      grid-gap: 1em;
-      justify-content: center;
-      margin: 2em 0;
-
-      h5 {
-        grid-column: 1 / -1;
-      }
-    }
-
-    a {
-      color: #78a6b8;
-    }
   }
 </style>

@@ -17,10 +17,9 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
-    "add": "^2.0.6",
     "axios": "^0.17.1",
-    "bootstrap": "^4.0.0-beta.2",
-    "bootstrap-vue": "^1.4.0",
+    "bootstrap": "^4.0.0",
+    "bootstrap-vue": "^1.4.1",
     "nuxt": "^1.0.0-rc11",
     "vue-infinite-loading": "^2.2.3",
     "vuex-persistedstate": "^2.4.2"

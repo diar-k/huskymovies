@@ -15,7 +15,7 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.0.2/css/all.css' }
     ],
     script: [
-      { src: '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' }
+      // { src: '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' }
     ]
   },
   /*
@@ -45,10 +45,9 @@ module.exports = {
   },
   mode: 'spa',
   css: [
-    '~/assets/main.css'
+    '~assets/main.css'
   ],
   modules: [
     'bootstrap-vue/nuxt'
-  ],
-  loadingIndicator: '~/assets/pulse.html'
+  ]
 }

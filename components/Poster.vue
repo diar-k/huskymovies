@@ -1,11 +1,11 @@
 <template>
-  <div class="poster fadein">
+  <div class="poster">
     <span class="fa-stack" @click="favorite(movie.id)">
       <i class="fas fa-circle fa-stack-2x"></i>
       <i class="fas fa-heart fa-stack-1x" :class="favorited"></i>
     </span>
     <nuxt-link :to="`/movie/${movie.id}`">
-        <img :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`">
+        <img :src="`https://image.tmdb.org/t/p/w185${movie.poster_path}`">
     </nuxt-link>
   </div>
 </template>
@@ -42,11 +42,13 @@
   .poster {
     position: relative;
     border: 2px solid rgba(25,37,50,.4);
+    width: 163px;
+    height: 243px;
   }
 
   .poster img {
-    width: 163px;
-    height: 243px;
+    width: 100%;
+    height: 100%;
   }
 
   .fa-stack {

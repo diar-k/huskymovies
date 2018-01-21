@@ -5,8 +5,9 @@ const createStore = () => {
   return new Vuex.Store({
     state: {
       filter: {
-        genres: [],
-        release_year: 0
+        sort_by: 'popularity.desc',
+        release_year: 2018,
+        genres: []
       },
       favorited: []
     },
@@ -23,6 +24,9 @@ const createStore = () => {
       unfavorite (state, id) {
         let index = state.favorited.indexOf(id)
         state.favorited.splice(index, 1)
+      },
+      updateSortBy (state, value) {
+        state.filter.sort_by = value
       }
     },
     actions: {
