@@ -1,5 +1,5 @@
 <template>
-  <div class="poster">
+  <div class="poster fade-in">
     <span class="fa-stack" @click="favorite(movie.id)">
       <i class="fas fa-circle fa-stack-2x"></i>
       <i class="fas fa-heart fa-stack-1x" :class="favorited"></i>

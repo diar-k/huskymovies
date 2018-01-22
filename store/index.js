@@ -6,8 +6,8 @@ const createStore = () => {
     state: {
       filter: {
         sort_by: 'popularity.desc',
-        release_year: 2018,
-        genres: []
+        release_year: 2017,
+        genre: ''
       },
       favorited: []
     },
@@ -27,6 +27,12 @@ const createStore = () => {
       },
       updateSortBy (state, value) {
         state.filter.sort_by = value
+      },
+      updateReleaseYear (state, value) {
+        state.filter.release_year = value
+      },
+      updateGenre (state, value) {
+        state.filter.genre = value
       }
     },
     actions: {
