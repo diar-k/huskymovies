@@ -21,7 +21,7 @@
 
   .nav-link {
     padding: 0.75em 1em !important;
-    color: #dbe9f0 !important;
+    color: #cbd2d0 !important;
   }
 
   .nav-link:hover {
@@ -30,7 +30,7 @@
 
   .nav-link.active {
     background-color: rgba(26, 45, 59, 0.98);
-    color: #dbe9f0 !important;
+    color: #cbd2d0 !important;
   }
 
 </style>
