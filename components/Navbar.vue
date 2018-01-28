@@ -5,8 +5,8 @@
       <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav>
-          <b-nav-item to="/" exact>DISCOVER</b-nav-item>
-          <b-nav-item to="/favorites">FAVORITES</b-nav-item>
+          <b-nav-item to="/" exact>Discover</b-nav-item>
+          <b-nav-item to="/favorites">Favorites</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-container>
@@ -14,12 +14,23 @@
 </template>
 
 <style lang="scss" scoped>
-  :root {
-    --navbar-color: #0b1520;
+  .navbar {
+    padding: 0;
+    background-color: rgba(21, 32, 42, 0.98);
   }
 
-  nav {
-    background-color: var(--navbar-color);
+  .nav-link {
+    padding: 0.75em 1em !important;
+    color: #dbe9f0 !important;
+  }
+
+  .nav-link:hover {
+    background-color: rgba(26, 45, 59, 0.98);
+  }
+
+  .nav-link.active {
+    background-color: rgba(26, 45, 59, 0.98);
+    color: #dbe9f0 !important;
   }
 
 </style>

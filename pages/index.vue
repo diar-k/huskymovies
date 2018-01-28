@@ -130,6 +130,7 @@
     padding-top: 0;
     padding-bottom: 0;
     padding-left: 6px;
+    border-radius: 2px;
   }
 
   .custom-select option {

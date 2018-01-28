@@ -9,6 +9,7 @@
         <h3 class="title">{{ movie.title }}</h3>
         <h6 class="text-grey">{{ runtime }}</h6>
         <h6 class="text-grey">{{ genres }}</h6>
+        <h6 class="text-dark-yellow">Trailer</h6>
         <a class="text-light-blue" :href="`http://www.imdb.com/title/${movie.imdb_id}`" target="_blank" rel="noopener">IMDB</a>
         <p class="text-grey mt-3 mb-1">{{ movie.overview }}</p>
       </article>
@@ -18,10 +19,12 @@
       <p>{{ movie.release_date }}</p>
       <h6 class="text-grey">Homepage</h6>
       <p class="homepage text-light-blue"><a class="text-light-blue" :href="movie.homepage" target="_blank" rel="noopener">{{ homepage }}</a></p>
-
     </aside>
     <main class="content">
-      <b-embed type="iframe" aspect="16by9" src="/jumanji.mp4"></b-embed>
+      <b-embed type="video" aspect="16by9" controls>
+        <source src="/jumanji.mp4"
+                type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+      </b-embed>
     </main>
     <section class="ad"></section>
     <section class="recommended-movies">
