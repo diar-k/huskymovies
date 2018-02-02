@@ -29,7 +29,7 @@
     <section class="ad"></section>
     <section class="ad2"></section>
     <section class="recommended-movies">
-      <h5>You may also like</h5>
+      <h5 class="text-light-blue">You may also like</h5>
       <Poster v-for="(movie, i) in recommended_movies" :movie="movie" :key="i" />
     </section>
   </div>
