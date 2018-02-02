@@ -9,7 +9,6 @@
         <h3 class="title">{{ movie.title }}</h3>
         <h6 class="text-grey">{{ runtime }}</h6>
         <h6 class="text-grey">{{ genres }}</h6>
-        <h6 class="text-dark-yellow">Trailer</h6>
         <a class="text-light-blue" :href="`http://www.imdb.com/title/${movie.imdb_id}`" target="_blank" rel="noopener">IMDB</a>
         <p class="text-grey mt-3 mb-1">{{ movie.overview }}</p>
       </article>
@@ -21,16 +20,18 @@
       <p class="homepage text-light-blue"><a class="text-light-blue" :href="movie.homepage" target="_blank" rel="noopener">{{ homepage }}</a></p>
     </aside>
     <main class="content">
-      <b-embed type="video" aspect="16by9" controls>
-        <source src="/jumanji.mp4"
-                type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-      </b-embed>
+      <b-embed type="iframe"
+               aspect="16by9"
+               :src="`https://www.youtube.com/embed/${trailer_id}`"
+               allowfullscreen
+      ></b-embed>
     </main>
     <section class="ad"></section>
+    <section class="ad2"></section>
     <section class="recommended-movies">
+      <h5>You may also like</h5>
       <Poster v-for="(movie, i) in recommended_movies" :movie="movie" :key="i" />
     </section>
-    <footer class="footer"></footer>
   </div>
 </template>
 
@@ -66,7 +67,7 @@
         return this.movie.videos.results[0].key
       },
       recommended_movies () {
-        return this.movie.recommendations.results.slice(0, 6)
+        return this.movie.recommendations.results.slice(0, 7)
       }
     },
     components: {
@@ -81,7 +82,7 @@
     display: grid;
     grid-template-columns: repeat(24, 1fr);
     grid-column-gap: 1em;
-    grid-row-gap: 3em;
+    grid-row-gap: 2em;
   }
 
   .banner {
@@ -125,7 +126,7 @@
   }
 
   .aside {
-    grid-column: 2 / span 5;
+    grid-column: 2 / span 4;
 
     .homepage {
       white-space: nowrap;
@@ -135,7 +136,7 @@
   }
 
   .content {
-    grid-column: 7 / span 12;
+    grid-column: 6 / span 12;
   }
 
   .ad {
@@ -145,16 +146,23 @@
     background-color: black;
   }
 
+  .ad2 {
+    grid-column: 4 / span 10;
+    width: 970px;
+    height: 90px;
+    background-color: black;
+  }
+
   .recommended-movies {
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: repeat(auto-fit, 163px);
     grid-gap: 1em;
     justify-content: center;
-    margin: 1em 0;
-  }
+    margin-bottom: 2em;
 
-  .footer {
-
+    h5 {
+      grid-column: 1 / -1;
+    }
   }
 </style>
