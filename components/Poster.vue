@@ -1,6 +1,6 @@
 <template>
   <div class="poster fade-in">
-    <span class="fa-stack" @click="favorite(movie.id)">
+    <span class="fa-stack" @click="favorite">
       <i class="fas fa-circle fa-stack-2x"></i>
       <i class="fas fa-heart fa-stack-1x" :class="favorited"></i>
     </span>
@@ -20,12 +20,12 @@
     },
     computed: {
       favorited () {
-        return [this.$store.getters.isFavorited(this.movie.id) ? 'fa-heart--active' : '']
+        return [this.$store.getters.isFavorited(this.movie) ? 'fa-heart--active' : '']
       }
     },
     methods: {
-      favorite (id) {
-        this.$store.dispatch('favorite', id)
+      favorite () {
+        this.$store.dispatch('favorite', this.movie)
       }
     }
   }

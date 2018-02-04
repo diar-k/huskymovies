@@ -18,6 +18,7 @@
       <p>{{ movie.release_date }}</p>
       <h6 class="text-grey">Homepage</h6>
       <p class="homepage text-light-blue"><a class="text-light-blue" :href="movie.homepage" target="_blank" rel="noopener">{{ homepage }}</a></p>
+      <CollectionPoster v-if="movie.belongs_to_collection" :collection="movie.belongs_to_collection" />
     </aside>
     <main class="content">
       <b-embed type="iframe"
@@ -29,7 +30,7 @@
     <section class="ad"></section>
     <section class="ad2"></section>
     <section class="recommended-movies">
-      <h5 class="text-light-blue">You may also like</h5>
+      <h5>You may also like</h5>
       <Poster v-for="(movie, i) in recommended_movies" :movie="movie" :key="i" />
     </section>
   </div>
@@ -38,6 +39,7 @@
 <script>
   import axios from 'axios'
   import Poster from '~/components/Poster'
+  import CollectionPoster from '~/components/CollectionPoster'
   import Adsense from '~/components/Adsense'
 
   export default {
@@ -64,7 +66,8 @@
         return this.movie.homepage.length > 0 ? this.movie.homepage : '-'
       },
       trailer_id () {
-        return this.movie.videos.results[0].key
+        const trailer = this.movie.videos.results.find(x => x.type === 'Trailer')
+        return trailer.key
       },
       recommended_movies () {
         return this.movie.recommendations.results.slice(0, 7)
@@ -72,6 +75,7 @@
     },
     components: {
       Poster,
+      CollectionPoster,
       Adsense
     }
   }
@@ -82,7 +86,7 @@
     display: grid;
     grid-template-columns: repeat(24, 1fr);
     grid-column-gap: 1em;
-    grid-row-gap: 2em;
+    grid-row-gap: 1em;
   }
 
   .banner {

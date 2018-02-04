@@ -77,7 +77,12 @@
         }
       },
       years () {
-        return [...Array(119)].map((n, i) => 2018 - i)
+        let years = []
+        years.push('All')
+        for (let i = 2018; i >= 1900; i--) {
+          years.push(i)
+        }
+        return years
       },
       genre_selected: {
         get () {

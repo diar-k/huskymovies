@@ -9,21 +9,21 @@ const createStore = () => {
         release_year: 2017,
         genre: ''
       },
-      favorited: []
+      favorites: []
     },
     plugins: [createPersistedState()],
     getters: {
-      isFavorited: state => (id) => {
-        return state.favorited.includes(id)
+      isFavorited: state => (movie) => {
+        return state.favorites.find(x => x.id === movie.id)
       }
     },
     mutations: {
-      favorite (state, id) {
-        state.favorited.push(id)
+      favorite (state, movie) {
+        state.favorites.push(movie)
       },
-      unfavorite (state, id) {
-        let index = state.favorited.indexOf(id)
-        state.favorited.splice(index, 1)
+      unfavorite (state, movie) {
+        let index = state.favorites.indexOf(movie)
+        state.favorites.splice(index, 1)
       },
       updateSortBy (state, value) {
         state.filter.sort_by = value
@@ -36,11 +36,11 @@ const createStore = () => {
       }
     },
     actions: {
-      favorite ({ commit, getters }, id) {
-        if (getters.isFavorited(id)) {
-          commit('unfavorite', id)
+      favorite ({ commit, getters }, movie) {
+        if (getters.isFavorited(movie)) {
+          commit('unfavorite', movie)
         } else {
-          commit('favorite', id)
+          commit('favorite', movie)
         }
       }
     }
