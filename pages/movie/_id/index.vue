@@ -140,7 +140,7 @@
   }
 
   .content {
-    grid-column: 6 / span 12;
+    grid-column: 6 / span 13;
   }
 
   .ad {
