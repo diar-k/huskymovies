@@ -1,8 +1,11 @@
 <template>
-  <div class="poster">
-    <img :src="`https://image.tmdb.org/t/p/w185${collection.poster_path}`">
+  <div class="poster d-none">
+    <img class="" :src="`https://image.tmdb.org/t/p/w185${collection.poster_path}`">
+    <img class="d-lg-none d-xl-none" :src="`https://image.tmdb.org/t/p/w250_and_h141_bestv2${collection.backdrop_path}`">
     <nuxt-link :to="`/collection/${collection.id}`">
-      <button class="button">View collection</button>
+      <p class="center-button">
+        <button class="button">View collection</button>
+      </p>
     </nuxt-link>
   </div>
 </template>
@@ -24,13 +27,19 @@
   }
 
   .poster img {
+    width: 100%;
     filter: opacity(0.5);
   }
 
-  .button {
-    position: absolute;
+  .center-button {
+    left: 0;
+    position:absolute;
+    text-align:center;
     bottom: 80px;
-    left: 35px;
+    width: 100%
+  }
+
+  .button {
     padding: 0.75em;
     background-color: rgba(139, 0, 0, 0.7);
     color: white;

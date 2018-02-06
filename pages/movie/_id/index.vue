@@ -1,7 +1,8 @@
 <template>
   <div class="wrapper">
     <section class="banner">
-      <img class="backdrop" :src="`https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path}`">
+      <img class="backdrop d-lg-none d-xl-none" :src="`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`">
+      <img class="backdrop d-none d-md-block" :src="`https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path}`">
       <div class="backdrop-overlay"></div>
       <img class="poster" :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`">
       <article class="description">
@@ -10,29 +11,28 @@
         <h6 class="text-grey">{{ runtime }}</h6>
         <h6 class="text-grey">{{ genres }}</h6>
         <a class="text-light-blue" :href="`http://www.imdb.com/title/${movie.imdb_id}`" target="_blank" rel="noopener">IMDB</a>
-        <p class="text-grey mt-3 mb-1">{{ movie.overview }}</p>
+        <p class="text-grey mt-3 mb-1 d-none d-md-block">{{ movie.overview }}</p>
       </article>
     </section>
     <aside class="aside">
+      <h5 class="text-blue-grey d-lg-none d-xl-none">Overview</h5>
+      <p class="text-grey mb-3 d-lg-none d-xl-none">{{ movie.overview }}</p>
+      <h5 class="text-blue-grey">Facts</h5>
       <h6 class="text-grey">Release date</h6>
       <p>{{ movie.release_date }}</p>
       <h6 class="text-grey">Homepage</h6>
-      <p class="homepage text-light-blue"><a class="text-light-blue" :href="movie.homepage" target="_blank" rel="noopener">{{ homepage }}</a></p>
-      <CollectionPoster v-if="movie.belongs_to_collection" :collection="movie.belongs_to_collection" />
+      <a class="text-light-blue" :href="movie.homepage" target="_blank" rel="noopener">{{ homepage_link }}</a>
     </aside>
     <main class="content">
-      <b-embed type="iframe"
+      <collection-poster v-if="movie.belongs_to_collection" class="mt-4" :collection="movie.belongs_to_collection" ></collection-poster>
+      <b-embed v-if="trailer"
+               type="iframe"
                aspect="16by9"
-               :src="`https://www.youtube.com/embed/${trailer_id}`"
+               :src="`https://www.youtube.com/embed/${trailer}`"
                allowfullscreen
       ></b-embed>
     </main>
     <section class="ad"></section>
-    <section class="ad2"></section>
-    <section class="recommended-movies">
-      <h5>You may also like</h5>
-      <Poster v-for="(movie, i) in recommended_movies" :movie="movie" :key="i" />
-    </section>
   </div>
 </template>
 
@@ -62,15 +62,12 @@
       runtime () {
         return Math.trunc(this.movie.runtime / 60) + 'h ' + (this.movie.runtime % 60) + 'm'
       },
-      homepage () {
+      homepage_link () {
         return this.movie.homepage.length > 0 ? this.movie.homepage : '-'
       },
-      trailer_id () {
+      trailer () {
         const trailer = this.movie.videos.results.find(x => x.type === 'Trailer')
-        return trailer.key
-      },
-      recommended_movies () {
-        return this.movie.recommendations.results.slice(0, 7)
+        return trailer !== undefined ? trailer.key : ''
       }
     },
     components: {
@@ -85,8 +82,8 @@
   .wrapper {
     display: grid;
     grid-template-columns: repeat(24, 1fr);
-    grid-column-gap: 1em;
-    grid-row-gap: 1em;
+    grid-gap: 1em;
+    margin-bottom: 1em;
   }
 
   .banner {
@@ -131,42 +128,68 @@
 
   .aside {
     grid-column: 2 / span 4;
-
-    .homepage {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
   }
 
   .content {
     grid-column: 6 / span 13;
+    display: grid;
   }
 
   .ad {
-    grid-column: 19 / span 4;
-    width: 300px;
+    grid-column: 19 / span 5;
     height: 250px;
     background-color: black;
   }
 
-  .ad2 {
-    grid-column: 4 / span 10;
-    width: 970px;
-    height: 90px;
-    background-color: black;
-  }
+  @media (max-width: 767px) {
+    .wrapper {
+      grid-template-columns: repeat(12, 1fr);
+    }
 
-  .recommended-movies {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 163px);
-    grid-gap: 1em;
-    justify-content: center;
-    margin-bottom: 2em;
+    .banner {
+      .poster {
+        grid-column: 3 / span 5;
+      }
 
-    h5 {
+      .description {
+        grid-column: 8 / span 7;
+      }
+    }
+
+    .aside {
+      grid-column: 2 / span 10;
+    }
+
+    .content {
       grid-column: 1 / -1;
     }
+
+    .ad {
+      grid-column: 2 / span 10;
+      grid-row: 3;
+    }
+
+    h3, h5, h6, a, p {
+      margin-bottom: 0.25em;
+    }
+
+    h3 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6, a, p {
+      font-size: 12px;
+    }
+
+
   }
+
+  @media (max-width: 991px) {
+
+  }
+
 </style>

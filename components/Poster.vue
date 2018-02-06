@@ -5,7 +5,7 @@
       <i class="fas fa-heart fa-stack-1x" :class="favorited"></i>
     </span>
     <nuxt-link :to="`/movie/${movie.id}`">
-      <b-img-lazy :src="`https://image.tmdb.org/t/p/w185${movie.poster_path}`" />
+      <img :src="`https://image.tmdb.org/t/p/w185${movie.poster_path}`" :alt="movie.title">
     </nuxt-link>
   </div>
 </template>
