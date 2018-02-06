@@ -21,7 +21,7 @@
       <h6 class="text-grey">Release date</h6>
       <p>{{ movie.release_date }}</p>
       <h6 class="text-grey">Homepage</h6>
-      <a class="text-light-blue" :href="movie.homepage" target="_blank" rel="noopener">{{ homepage_link }}</a>
+      <p class="homepage"><a class="text-light-blue" :href="movie.homepage" target="_blank" rel="noopener">{{ homepage_link }}</a></p>
     </aside>
     <main class="content">
       <b-embed v-if="trailer"
@@ -32,6 +32,10 @@
       ></b-embed>
     </main>
     <section class="ad"></section>
+    <section class="recommended-movies mt-3">
+      <h5 v-if="recommended_movies.length > 0">You may also like</h5>
+      <Poster v-for="(movie, i) in recommended_movies" :movie="movie" :key="i" />
+    </section>
   </div>
 </template>
 
@@ -67,6 +71,9 @@
       trailer () {
         const trailer = this.movie.videos.results.find(x => x.type === 'Trailer')
         return trailer !== undefined ? trailer.key : ''
+      },
+      recommended_movies () {
+        return this.movie.recommendations.results.slice(0, 7)
       }
     },
     components: {
@@ -127,6 +134,16 @@
 
   .aside {
     grid-column: 2 / span 4;
+
+    .homepage {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      a {
+        display: inline-block;
+      }
+    }
   }
 
   .content {
@@ -137,6 +154,23 @@
     grid-column: 19 / span 5;
     height: 250px;
     background-color: black;
+  }
+
+  .recommended-movies {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 163px);
+    grid-gap: 1em;
+    justify-content: center;
+    margin-bottom: 2em;
+
+    h5 {
+      grid-column: 1 / -1;
+    }
+  }
+
+  a:hover {
+    color: #78a6b8;
   }
 
   @media (max-width: 767px) {
@@ -164,7 +198,12 @@
 
     .ad {
       grid-column: 2 / span 10;
-      grid-row: 3;
+    }
+
+    .recommended-movies {
+      h5 {
+        font-size: 16px;
+      }
     }
 
     h3, h5, h6, a, p {
