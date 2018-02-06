@@ -24,7 +24,6 @@
       <a class="text-light-blue" :href="movie.homepage" target="_blank" rel="noopener">{{ homepage_link }}</a>
     </aside>
     <main class="content">
-      <collection-poster v-if="movie.belongs_to_collection" class="mt-4" :collection="movie.belongs_to_collection" ></collection-poster>
       <b-embed v-if="trailer"
                type="iframe"
                aspect="16by9"
@@ -132,7 +131,6 @@
 
   .content {
     grid-column: 6 / span 13;
-    display: grid;
   }
 
   .ad {

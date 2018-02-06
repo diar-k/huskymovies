@@ -1,7 +1,7 @@
 <template>
-  <div class="poster d-none">
+  <div class="poster">
     <img class="" :src="`https://image.tmdb.org/t/p/w185${collection.poster_path}`">
-    <img class="d-lg-none d-xl-none" :src="`https://image.tmdb.org/t/p/w250_and_h141_bestv2${collection.backdrop_path}`">
+    <img class="" :src="`https://image.tmdb.org/t/p/w250_and_h141_bestv2${collection.backdrop_path}`">
     <nuxt-link :to="`/collection/${collection.id}`">
       <p class="center-button">
         <button class="button">View collection</button>
