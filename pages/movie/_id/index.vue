@@ -33,7 +33,7 @@
       ></b-embed>
     </main>
     <section class="ad"></section>
-    <section class="recommended-movies">
+    <section class="recommended-movies mt-3">
       <h5 v-if="recommended_movies.length > 0">You may also like</h5>
       <Poster v-for="(movie, i) in recommended_movies" :movie="movie" :key="i" />
     </section>
@@ -191,7 +191,7 @@
       }
 
       h3, h5, h6, a, p {
-        margin-bottom: 0.25em;
+        margin-bottom: 0.3em;
       }
     }
 
@@ -209,24 +209,24 @@
 
     .recommended-movies {
       h5 {
-        font-size: 16px;
+        font-size: calc(0.4em + 2.5vw);
       }
     }
 
     h3 {
-      font-size: 16px;
+      font-size: calc(0.4em + 2.5vw);
     }
 
     h5 {
-      font-size: 14px;
+      font-size: calc(0.2em + 2.5vw);
     }
 
     h6, a, p {
-      font-size: 12px;
+      font-size: calc(0.1em + 2.5vw);
     }
   }
 
-  @media (max-width: 991px) {
+  @media (min-width: 768px) and (max-width: 991px) {
     .banner {
       h3, h5, h6, a, p {
         margin-bottom: 0.25em;
@@ -240,7 +240,7 @@
     }
 
     h3 {
-      font-size: 2.5vw;
+      font-size: 2.2vw;
     }
 
     h5 {
@@ -248,7 +248,7 @@
     }
 
     h6, a, p {
-      font-size: 1.3vw;
+      font-size: 1.4vw;
     }
   }
 
