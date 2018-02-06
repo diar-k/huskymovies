@@ -15,7 +15,7 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.0.2/css/all.css' }
     ],
     script: [
-      // { src: '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' }
+      // { src: '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', async: true }
     ]
   },
   /*

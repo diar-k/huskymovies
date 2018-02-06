@@ -45,7 +45,7 @@
     color: white;
     border-radius: 3em;
     border: 0;
-    font-size: 1.2vw;
+    font-size: 1vw;
     font-weight: bold;
   }
 
