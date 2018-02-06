@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <section class="banner">
-      <img class="backdrop d-lg-none d-xl-none" :src="`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`">
+      <img class="backdrop d-md-none d-lg-none d-xl-none" :src="`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`">
       <img class="backdrop d-none d-md-block" :src="`https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path}`">
       <div class="backdrop-overlay"></div>
       <img class="poster" :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`">
@@ -11,17 +11,18 @@
         <h6 class="text-grey">{{ runtime }}</h6>
         <h6 class="text-grey">{{ genres }}</h6>
         <a class="text-light-blue" :href="`http://www.imdb.com/title/${movie.imdb_id}`" target="_blank" rel="noopener">IMDB</a>
-        <p class="text-grey mt-3 mb-1 d-none d-md-block">{{ movie.overview }}</p>
+        <p class="text-grey mt-2 mb-1 d-none d-md-block">{{ movie.overview }}</p>
       </article>
     </section>
     <aside class="aside">
-      <h5 class="text-blue-grey d-lg-none d-xl-none">Overview</h5>
-      <p class="text-grey mb-3 d-lg-none d-xl-none">{{ movie.overview }}</p>
+      <h5 class="text-blue-grey d-md-none d-lg-none d-xl-none">Overview</h5>
+      <p class="text-grey mb-3 d-md-none d-lg-none d-xl-none">{{ movie.overview }}</p>
       <h5 class="text-blue-grey">Facts</h5>
       <h6 class="text-grey">Release date</h6>
       <p>{{ movie.release_date }}</p>
       <h6 class="text-grey">Homepage</h6>
       <p class="homepage"><a class="text-light-blue" :href="movie.homepage" target="_blank" rel="noopener">{{ homepage_link }}</a></p>
+      <CollectionPoster class="d-none d-md-block" v-if="movie.belongs_to_collection" :collection="movie.belongs_to_collection" />
     </aside>
     <main class="content">
       <b-embed v-if="trailer"
@@ -32,7 +33,7 @@
       ></b-embed>
     </main>
     <section class="ad"></section>
-    <section class="recommended-movies mt-3">
+    <section class="recommended-movies">
       <h5 v-if="recommended_movies.length > 0">You may also like</h5>
       <Poster v-for="(movie, i) in recommended_movies" :movie="movie" :key="i" />
     </section>
@@ -148,6 +149,8 @@
 
   .content {
     grid-column: 6 / span 13;
+    display: flex;
+    align-content: stretch;
   }
 
   .ad {
@@ -173,7 +176,7 @@
     color: #78a6b8;
   }
 
-  @media (max-width: 767px) {
+  @media only screen and (max-width: 767px) {
     .wrapper {
       grid-template-columns: repeat(12, 1fr);
     }
@@ -185,6 +188,10 @@
 
       .description {
         grid-column: 8 / span 7;
+      }
+
+      h3, h5, h6, a, p {
+        margin-bottom: 0.25em;
       }
     }
 
@@ -206,10 +213,6 @@
       }
     }
 
-    h3, h5, h6, a, p {
-      margin-bottom: 0.25em;
-    }
-
     h3 {
       font-size: 16px;
     }
@@ -221,12 +224,32 @@
     h6, a, p {
       font-size: 12px;
     }
-
-
   }
 
   @media (max-width: 991px) {
+    .banner {
+      h3, h5, h6, a, p {
+        margin-bottom: 0.25em;
+      }
+    }
 
+    .recommended-movies {
+      h5 {
+        font-size: 2.5vw;
+      }
+    }
+
+    h3 {
+      font-size: 2.5vw;
+    }
+
+    h5 {
+      font-size: 1.8vw;
+    }
+
+    h6, a, p {
+      font-size: 1.3vw;
+    }
   }
 
 </style>

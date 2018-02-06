@@ -1,7 +1,6 @@
 <template>
   <div class="poster">
-    <img class="" :src="`https://image.tmdb.org/t/p/w185${collection.poster_path}`">
-    <img class="" :src="`https://image.tmdb.org/t/p/w250_and_h141_bestv2${collection.backdrop_path}`">
+    <img :src="`https://image.tmdb.org/t/p/w185${collection.poster_path}`">
     <nuxt-link :to="`/collection/${collection.id}`">
       <p class="center-button">
         <button class="button">View collection</button>
@@ -24,6 +23,7 @@
 <style scoped>
   .poster {
     position: relative;
+    max-width: 185px;
   }
 
   .poster img {
@@ -35,7 +35,7 @@
     left: 0;
     position:absolute;
     text-align:center;
-    bottom: 80px;
+    bottom: 20%;
     width: 100%
   }
 
@@ -45,7 +45,7 @@
     color: white;
     border-radius: 3em;
     border: 0;
-    font-size: 12px;
+    font-size: 1.2vw;
     font-weight: bold;
   }
 
