@@ -1,5 +1,7 @@
 <template>
-  <b-form-input v-model="search_text" @submit="search" size="sm" class="mr-sm-2" type="text" placeholder="star wars y:1979" />
+  <b-nav-form @submit.prevent="search">
+    <b-form-input v-model="search_text" size="sm" class="mr-sm-2" type="text" placeholder="star wars y:1979" />
+  </b-nav-form>
 </template>
 
 <script>
@@ -11,7 +13,7 @@
     },
     methods: {
       search () {
-        console.log(this.search_text)
+        this.$router.push({ path: '/search', query: { movie: this.search_text } })
       }
     }
   }
