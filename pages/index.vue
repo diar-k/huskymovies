@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div class="container">
+  	  <h3 class="about-text">Connecting movie fans with their favorite movies</h3>
+    </div>
     <div class="filter sticky-top mt-md-3">
       <b-form-select v-model="sort_by_selected" @change="changeFilter" :options="sort_by_options" size="sm" class="sort-by-select">
       </b-form-select>
@@ -176,5 +179,25 @@
 
   .genre-select {
     width: 100px;
+  }
+
+  .about-text {
+    font-size: calc(0.6em + 2.2vw);
+  }
+
+  @media only screen and (max-width: 575px) {
+    .sort-by-select {
+      width: 35%;
+      margin-right: 1em;
+    }
+
+    .release-year-select {
+      width: 20%;
+      margin-right: 1em;
+    }
+
+    .genre-select {
+      width: 25%;
+    }
   }
 </style>

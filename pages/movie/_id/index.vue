@@ -67,7 +67,7 @@
         return Math.trunc(this.movie.runtime / 60) + 'h ' + (this.movie.runtime % 60) + 'm'
       },
       homepage_link () {
-        return this.movie.homepage.length > 0 ? this.movie.homepage : '-'
+        return this.movie.homepage !== null ? this.movie.homepage : '-'
       },
       trailer () {
         const trailer = this.movie.videos.results.find(x => x.type === 'Trailer')
