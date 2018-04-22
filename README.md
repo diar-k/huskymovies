@@ -8,6 +8,12 @@
 
 <br>
 
+## Built with
+
+- Vue
+- Nuxt
+- Bootstrap/BootstrapVue
+
 ## Build Setup
 
 ``` bash
