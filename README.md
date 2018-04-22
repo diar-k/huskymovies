@@ -1,6 +1,8 @@
-# movieproject
+<h2 align="center">Huskymovies</h2>
 
-> Nuxt.js project
+<p align="center">
+  Connecting movie fans with their favorite movies.
+</p>
 
 ## Build Setup
 
