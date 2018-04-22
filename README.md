@@ -1,10 +1,14 @@
-<h2 align="center">Huskymovies</h2>
-
 <p align="center">
-  Connecting movie fans with their favorite movies.
+  <h3 align="center">Huskymovies</h3>
+
+  <p align="center">
+    Connecting movie fans with their favorite movies.
+  </p>
 </p>
 
-## Build Setup
+<br>
+
+ Build Setup
 
 ``` bash
 # install dependencies
