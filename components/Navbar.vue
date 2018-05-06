@@ -1,7 +1,7 @@
 <template>
   <b-navbar toggleable="md" type="dark">
     <b-container>
-<!--       <b-navbar-brand to="/">Huskymovies</b-navbar-brand> -->
+      <b-navbar-brand to="/">Huskymovies</b-navbar-brand>
       <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav>
@@ -10,7 +10,6 @@
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <SearchBar />
-          <b-nav-item to="/about"><i class="fas fa-info"></i></b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-container>
@@ -30,6 +29,10 @@
 <style>
   .navbar-dark .navbar-toggler {
     border: 0;
+  }
+
+  .navbar-brand {
+    font-family: 'Bree Serif', serif;
   }
 </style>
 

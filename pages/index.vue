@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="container">
-  	  <h3 class="about-text">Connecting movie fans with their favorite movies</h3>
+  	  <img src="bg.png">
+      <h3 class="about-text">Find out more about your favorite movies.</h3>
     </div>
     <div class="filter sticky-top mt-md-3">
       <b-form-select v-model="sort_by_selected" @change="changeFilter" :options="sort_by_options" size="sm" class="sort-by-select">
@@ -152,6 +153,11 @@
     margin-top: 1em;
     text-align: center;
   }
+
+  .container img {
+    max-width: 900px;
+  }
+
   .wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, 163px);
@@ -162,7 +168,6 @@
   .filter {
     height: 45px;
     background-color: rgba(24,37,49,.98);
-    box-shadow: 0 5px 30px rgba(0,0,0,.5);
     padding-top: 7px;
     padding-left: 10%;
   }
@@ -182,7 +187,7 @@
   }
 
   .about-text {
-    font-size: calc(0.6em + 2.2vw);
+    font-size: calc(0.2em + 1.8vw);
   }
 
   @media only screen and (max-width: 575px) {
@@ -198,6 +203,16 @@
 
     .genre-select {
       width: 25%;
+    }
+
+    .container img {
+      display: none;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    .container img {
+      display: none;
     }
   }
 </style>
