@@ -30,10 +30,6 @@
   .navbar-dark .navbar-toggler {
     border: 0;
   }
-
-  .navbar-brand {
-    font-family: 'Bree Serif', serif;
-  }
 </style>
 
 <style scoped>

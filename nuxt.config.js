@@ -12,7 +12,6 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:500,700' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Bree+Serif' },
       { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.0.2/css/all.css' }
     ],
     script: [
