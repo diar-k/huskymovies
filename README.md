@@ -2,7 +2,7 @@
   <h3 align="center">Huskymovies</h3>
 
   <p align="center">
-    Connecting movie fans with their favorite movies.
+    Find out more about your favorite movies.
   </p>
 </p>
 

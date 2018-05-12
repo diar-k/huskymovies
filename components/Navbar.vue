@@ -10,6 +10,7 @@
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <SearchBar />
+          <b-nav-item to="/about"><i class="fas fa-info"></i></b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-container>

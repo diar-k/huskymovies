@@ -1,9 +1,5 @@
 <template>
   <div>
-    <div class="container">
-  	  <img src="bg.png">
-      <h3 class="about-text">Find out more about your favorite movies.</h3>
-    </div>
     <div class="filter sticky-top mt-md-3">
       <b-form-select v-model="sort_by_selected" @change="changeFilter" :options="sort_by_options" size="sm" class="sort-by-select">
       </b-form-select>
@@ -154,10 +150,6 @@
     text-align: center;
   }
 
-  .container img {
-    max-width: 900px;
-  }
-
   .wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, 163px);
@@ -186,10 +178,6 @@
     width: 100px;
   }
 
-  .about-text {
-    font-size: calc(0.2em + 1.8vw);
-  }
-
   @media only screen and (max-width: 575px) {
     .sort-by-select {
       width: 35%;
@@ -203,16 +191,6 @@
 
     .genre-select {
       width: 25%;
-    }
-
-    .container img {
-      display: none;
-    }
-  }
-
-  @media (min-width: 768px) and (max-width: 991px) {
-    .container img {
-      display: none;
     }
   }
 </style>
