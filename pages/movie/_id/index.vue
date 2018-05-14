@@ -114,7 +114,7 @@
     .backdrop-overlay {
       grid-column: 1 / -1;
       height: 80px;
-      background: linear-gradient(180deg,transparent 0, rgb(12, 25, 33));
+      background: linear-gradient(180deg,transparent 0, rgb(12, 21, 30));
       z-index: -9;
     }
 
