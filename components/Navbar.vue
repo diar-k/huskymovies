@@ -1,7 +1,7 @@
 <template>
   <b-navbar toggleable="md" type="dark">
     <b-container>
-<!--       <b-navbar-brand to="/">Huskymovies</b-navbar-brand> -->
+      <b-navbar-brand to="/">Huskymovies</b-navbar-brand>
       <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav>
